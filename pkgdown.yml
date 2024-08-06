@@ -1,0 +1,13 @@
+pandoc: 3.1.11
+pkgdown: 2.1.0
+pkgdown_sha: ~
+articles:
+  customizing_models: customizing_models.html
+  model_structure: model_structure.html
+  temperature_functions: temperature_functions.html
+  updating_functions: updating_functions.html
+  utility_functions: utility_functions.html
+last_built: 2024-08-06T22:27Z
+urls:
+  reference: areshenk-rpackages.github.io/iowamodels/reference
+  article: areshenk-rpackages.github.io/iowamodels/articles
