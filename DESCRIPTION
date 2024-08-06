@@ -1,0 +1,20 @@
+Package: iowamodels
+Type: Package
+Title: Modular reinforcement learning models in R
+Version: 0.0.1
+Author: Corson N. Areshenkoff
+Maintainer: Corson N. Areshenkoff <areshenk@protonmail.com>
+Description: Modular reinforcement learning models of the Iowa gambling task
+    implemented in Stan, using CmdStan as a backend.
+Depends:
+  R (>= 4.0.0)
+Imports:
+  instantiate
+Additional_repositories:
+  https://mc-stan.org/r-packages/
+SystemRequirements: CmdStan (https://mc-stan.org/users/interfaces/cmdstan)
+Encoding: UTF-8
+License: GPL-3
+LazyData: true
+RoxygenNote: 7.3.2
+URL: https://areshenk-rpackages.github.io/iowamodels/

@@ -1,0 +1,64 @@
+---
+title: "Model structure"
+author: "Corson N. Areshenkoff"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Model structure}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+**iowamodels** is designed to implement a broad class of reinforcement learning models
+of the Iowa gambling task, which take the following general form:
+
+In the task, the subject is presented with a set of $K$ decks, each of which 
+produces a reward or loss with some unknown frequency. Typically, the subject is 
+instructed only to maximize their total earnings by the end of the task, which they
+must do by learning which of the decks is the most profitable over the long term.
+
+```{r, echo=FALSE, fig.align = 'center'}
+# All defaults
+knitr::include_graphics('figures/fig_deckillustration.png')
+```
+
+Upon selecting a deck, the subject sees an outcome $x$, which they assign some
+utility $u(x)$. Note that, in many implementations of the task, the subject
+experiences both a gain $g$ and a loss $l$, and the utility function assumes that
+the utility of the outcome is some weighted combination of these two.
+
+```{r, echo=FALSE, fig.align = 'center'}
+# All defaults
+knitr::include_graphics('figures/fig_deckpayout.png')
+```
+
+The assumption is that the subject maintains a valuation $V = (v_1,v_2,v_3,v_4)$
+for each deck, corresponding to its expected utility. Upon selecting a deck $d$, 
+the subject observes an outcome with utility $u$ and updates the corresponding
+deck valuation through some updating function. The probability of selecting deck
+$d$ on the next trial is computed with a softmax function 
+
+$$
+P(d) = \frac{e^{\theta V_d}}{\sum_{i=1}^4 e^{\theta V_i}}
+$$
+
+where $\theta$ is a temperature parameter controlling the stochasticity of the
+decision rule. The temperature schedule (i.e. how it evolves over the course of 
+the task) is controlled by a temperature function $\theta(t)$, where $t$ is the
+current trial.
+
+### Specifying a model
+
+Models implemented by **iowamodels** require specifying the utility, updating, and 
+temperature functions. The package implements several common versions of each,
+based on models which have been commonly reported in the literature. Each
+function is identified by a keyword, and utility/updating/temperature functions
+can be mixed and matched. Detailed information about available options is given
+in the respective articles.

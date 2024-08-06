@@ -1,0 +1,38 @@
+---
+title: "Temperature functions"
+author: "Corson N. Areshenkoff"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Temperature functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+**iowa** implements multiple common temperature functions, and can be relatively easily extended to include more. These functions control the temperature of the softmax function use to assign
+probabilities to decks. Currently, The following are included in the base package:
+
+### Time independent parameters
+
+- Keyword: `TIC`
+- Parameters: `c` (Temperature)
+- Bounds: $c \in [0,\infty)$
+
+$$ \theta = 3^c $$
+
+### Time dependent parameters
+
+- Keyword: `TDC`
+- Parameters: `c` (Temperature)
+- Bounds: $c \in [0,\infty)$
+- Description: Temperature increases with increasing trials. Intended to simulate
+a gradual shift from exploratory to exploitative behavior. 
+
+$$ \theta(t) = \left ( \frac{t}{10} \right )^c $$

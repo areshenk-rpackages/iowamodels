@@ -1,0 +1,49 @@
+---
+title: "Utility functions"
+author: "Corson N. Areshenkoff"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Utility functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+**iowa** implements multiple common utility functions, and can be relatively easily extended to include more. Currently, The following are included in the base package:
+
+### Expectance valence utility 
+
+- Keyword: `EU`
+- Parameters: `w` (Win/loss weighting)
+- Bounds: $w \in [0,1]$
+- Depends: Gain and loss
+
+$$ u(g,l) = (1-w)g + wl $$
+
+### Prospect utility 
+
+- Keyword: `PU`
+- Parameters: `A` (Concavity), `L` (Loss aversion)
+- Bounds: $A \in [0,1]$, $L \in [0, \infty)$
+- Depends: Net outcome
+
+$$ u(x) = \begin{cases} 
+     x^A & x \geq 0\\
+     -L|x|^A & x < 0
+\end{cases}$$
+
+### Alternative prospect utility
+
+- Keyword: `PU2`
+- Parameters: `A` (Concavity), `L` (Loss aversion)
+- Bounds: $A \in [0,1]$, $L \in [0, \infty)$
+- Depends: Gain and loss
+
+$$ u(g,l) = g^A - Ll^A$$

@@ -1,0 +1,13 @@
+real utility(real win, real loss, array[] real par, int ind){
+
+    if (ind == 1){
+        return utility_EU(win, loss, par);
+    } else if (ind == 2){
+        return utility_PU(win, loss, par);
+    } else if (ind == 3){
+        return utility_PU2(win, loss, par);
+    } else {
+        return 0;
+    }
+
+}

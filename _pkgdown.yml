@@ -1,0 +1,38 @@
+url: areshenk-rpackages.github.io/iowamodels/
+template:
+  bootstrap: 5
+  bootswatch: lux
+  bslib:
+    bg: "#F6F9FA"
+    fg: "#000000"
+    pkgdown-nav-height: 100px
+
+home:
+  title: Modular reinforcement learning models of the IGT
+  description: >
+    iowamodels contains cmdstan implementations modular reinforcement learning models
+    of the Iowa gambling task.
+  strip_header: false
+
+authors:
+  Corson N. Areshenkoff:
+    href: "https://areshenk.github.io/"
+    html: "<img src='https://areshenk.github.io/about/sidebar/avatar.jpg' width=72>"
+
+articles:
+- title: Models
+  navbar: Models
+  contents:
+  - model_structure
+  - utility_functions
+  - updating_functions
+  - temperature_functions
+- title: Adding to iowa
+  navbar: Adding to iowa
+  contents:
+  - customizing_models
+
+reference:
+  - title: Package
+    contents:
+      - '`iowamodels-package`'

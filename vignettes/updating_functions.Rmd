@@ -1,0 +1,49 @@
+---
+title: "Updating functions"
+author: "Corson N. Areshenkoff"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Updating functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+**iowa** implements multiple common updating functions, and can be relatively easily extended to include more. Currently, The following are included in the base package:
+
+### Decay reinforcement learning rule
+
+- Keyword: `DRL`
+- Parameters: `d` (Decay parameter)
+- Bounds: $d \in [0,1]$
+- Description: Valuation of all decks decays by a factor of `d`, while the chosen
+deck `c` is updated by the observed utility `u`.
+
+$$ v_c(u) = dv_c + \delta_cu $$
+
+### Delta learning rule
+
+- Keyword: `DEL`
+- Parameters: `r` (Learning rate)
+- Bounds: $r \in [0,1]$
+- Description: Updates only the chosen deck using a reward prediction error (the difference
+between the observed and expected utility of the chosen deck)
+
+$$ v_c(u) = v_c + \delta_c r (u - v_c) $$
+
+### Mixed learning rule
+
+- Keyword: `ML`
+- Parameters: `d` (Decay parameter), `r` (Learning rate)
+- Bounds: $d \in [0,1]$, $r \in [0,1]$
+- Description: Valuation of all decks decays after each trial, as in `DRL`. The
+chosen deck is updated as in `DEL`.
+
+$$ v_c(u) = (1-d)v_c + \delta_c r [u - (1-d)v_c] $$

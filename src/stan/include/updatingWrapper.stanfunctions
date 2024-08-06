@@ -1,0 +1,13 @@
+vector updating(vector V, real u, int sel, array[] real par, int ind){
+
+    if (ind == 1){
+        return updating_DRL(V, u, sel, par);
+    } else if (ind == 2){
+        return updating_DEL(V, u, sel, par);
+    } else if (ind == 3){
+        return updating_ML(V, u, sel, par);
+    } else {
+        return V;
+    }
+
+}
